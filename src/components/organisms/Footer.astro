@@ -1,11 +1,22 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="w-full bg-background dark:bg-slate-950">
   <div class="color-divider"></div>
-  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full gap-6 max-w-7xl mx-auto">
-    <div class="font-headline font-bold text-slate-900 dark:text-white flex items-center gap-2">
-      <div class="w-6 h-6 bg-gradient-to-br from-primary to-tertiary dark:from-primary-bright dark:to-tertiary-bright rounded-sm"></div>
+  <div
+    class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full gap-6 max-w-7xl mx-auto"
+  >
+    <div
+      class="font-headline font-bold text-slate-900 dark:text-white flex items-center gap-2"
+    >
+      <div
+        class="w-6 h-6 bg-gradient-to-br from-primary to-tertiary dark:from-primary-bright dark:to-tertiary-bright rounded-sm"
+      >
+      </div>
       Code&amp;Craft
     </div>
     <p class="font-body text-sm text-slate-500 dark:text-slate-400">

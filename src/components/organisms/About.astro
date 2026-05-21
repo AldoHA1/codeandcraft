@@ -1,5 +1,6 @@
 ---
-
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="py-24 px-8 bg-background dark:bg-slate-950 relative" id="about">
