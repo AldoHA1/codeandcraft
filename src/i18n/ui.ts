@@ -97,6 +97,9 @@ export const ui = {
     'contact.form.message': 'Mensaje del Proyecto',
     'contact.form.messagePlaceholder': 'Describe tu visión...',
     'contact.form.submit': 'Enviar Mensaje',
+    'contact.form.sending': 'Enviando...',
+    'contact.form.success': 'Mensaje enviado. Te contactaremos pronto.',
+    'contact.form.error': 'No se pudo enviar. Intenta de nuevo o escríbenos a info@codeandcraftcr.com.',
 
     'footer.copyright': '© 2026 Code&Craft. Creado con precisión.',
   },
@@ -189,6 +192,9 @@ export const ui = {
     'contact.form.message': 'Project Message',
     'contact.form.messagePlaceholder': 'Describe your vision...',
     'contact.form.submit': 'Send Message',
+    'contact.form.sending': 'Sending...',
+    'contact.form.success': 'Message sent. We will be in touch soon.',
+    'contact.form.error': 'Could not send. Try again or email us at info@codeandcraftcr.com.',
 
     'footer.copyright': '© 2026 Code&Craft. Crafted with precision.',
   },

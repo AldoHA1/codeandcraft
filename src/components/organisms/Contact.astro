@@ -31,7 +31,16 @@ const t = useTranslations(lang);
   </div>
 
   <div class="max-w-2xl mx-auto reveal">
-    <form class="space-y-12" action="#" method="POST">
+    <form
+      id="contact-form"
+      class="space-y-12"
+      action="/api/contact"
+      method="POST"
+      data-label-submit={t("contact.form.submit")}
+      data-label-sending={t("contact.form.sending")}
+      data-msg-success={t("contact.form.success")}
+      data-msg-error={t("contact.form.error")}
+    >
       <div class="relative group">
         <label
           for="name"
@@ -44,6 +53,7 @@ const t = useTranslations(lang);
           name="name"
           placeholder={t("contact.form.namePlaceholder")}
           required
+          maxlength="200"
           class="w-full bg-background dark:bg-slate-900 border-0 border-b-2 border-outline-variant/30 dark:border-slate-700 focus:border-primary dark:focus:border-primary-bright focus:ring-0 transition-all px-4 py-3 text-lg dark:text-white dark:placeholder-slate-500"
         />
       </div>
@@ -60,6 +70,7 @@ const t = useTranslations(lang);
           name="email"
           placeholder={t("contact.form.emailPlaceholder")}
           required
+          maxlength="320"
           class="w-full bg-background dark:bg-slate-900 border-0 border-b-2 border-outline-variant/30 dark:border-slate-700 focus:border-secondary dark:focus:border-secondary-bright focus:ring-0 transition-all px-4 py-3 text-lg dark:text-white dark:placeholder-slate-500"
         />
       </div>
@@ -76,19 +87,84 @@ const t = useTranslations(lang);
           placeholder={t("contact.form.messagePlaceholder")}
           required
           rows="4"
+          maxlength="5000"
           class="w-full bg-background dark:bg-slate-900 border-0 border-b-2 border-outline-variant/30 dark:border-slate-700 focus:border-tertiary dark:focus:border-tertiary-bright focus:ring-0 transition-all px-4 py-3 text-lg resize-none dark:text-white dark:placeholder-slate-500"
         ></textarea>
       </div>
 
       <div class="pt-6">
         <button
+          id="contact-submit"
           type="submit"
-          class="w-full bg-gradient-to-r from-primary to-secondary dark:from-primary-bright dark:to-secondary-bright text-on-primary py-5 rounded-md font-bold text-lg hover:shadow-2xl hover:shadow-primary/25 dark:hover:shadow-primary-bright/20 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3 cursor-pointer"
+          class="w-full bg-gradient-to-r from-primary to-secondary dark:from-primary-bright dark:to-secondary-bright text-on-primary py-5 rounded-md font-bold text-lg hover:shadow-2xl hover:shadow-primary/25 dark:hover:shadow-primary-bright/20 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
         >
-          <span class="material-symbols-outlined">send</span>
-          {t("contact.form.submit")}
+          <span class="material-symbols-outlined" data-submit-icon>send</span>
+          <span data-submit-label>{t("contact.form.submit")}</span>
         </button>
+        <p
+          id="contact-status"
+          role="status"
+          aria-live="polite"
+          class="mt-4 text-center text-sm font-label hidden"
+        ></p>
       </div>
     </form>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  if (form) {
+    const button = form.querySelector("#contact-submit") as HTMLButtonElement;
+    const label = form.querySelector("[data-submit-label]") as HTMLElement;
+    const icon = form.querySelector("[data-submit-icon]") as HTMLElement;
+    const status = form.querySelector("#contact-status") as HTMLElement;
+
+    const labelSubmit = form.dataset.labelSubmit ?? "";
+    const labelSending = form.dataset.labelSending ?? "";
+    const msgSuccess = form.dataset.msgSuccess ?? "";
+    const msgError = form.dataset.msgError ?? "";
+
+    const setStatus = (text: string, kind: "success" | "error" | "") => {
+      status.textContent = text;
+      status.classList.remove("hidden", "text-primary", "text-error", "dark:text-primary-bright");
+      if (kind === "success") status.classList.add("text-primary", "dark:text-primary-bright");
+      if (kind === "error") status.classList.add("text-error");
+      if (!text) status.classList.add("hidden");
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (button.disabled) return;
+
+      const data = new FormData(form);
+      const payload = {
+        name: String(data.get("name") ?? "").trim(),
+        email: String(data.get("email") ?? "").trim(),
+        message: String(data.get("message") ?? "").trim(),
+      };
+
+      button.disabled = true;
+      label.textContent = labelSending;
+      icon.textContent = "hourglass_top";
+      setStatus("", "");
+
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        setStatus(msgSuccess, "success");
+      } catch {
+        setStatus(msgError, "error");
+      } finally {
+        button.disabled = false;
+        label.textContent = labelSubmit;
+        icon.textContent = "send";
+      }
+    });
+  }
+</script>

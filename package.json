@@ -16,9 +16,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.5.5",
+    "@sendgrid/mail": "^8.1.6",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.1.8",
     "tailwindcss": "^4.3.0",
-    "vite": "^7.0.0"
+    "vite": "^7.0.0",
+    "wrangler": "^4.95.0"
   }
 }
