@@ -29,20 +29,28 @@ const otherLangHref = getLocalizedHref(otherLang);
     <div class="hidden md:flex items-center gap-8">
       <a
         class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary-bright transition-colors active:scale-95"
-        href="#services">Servicios</a
+        href="#services">{t("nav.services")}</a
       >
       <a
         class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary-bright transition-colors active:scale-95"
-        href="#about">Nosotros</a
+        href="#about">{t("nav.about")}</a
       >
       <a
         class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary-bright transition-colors active:scale-95"
-        href="#contact">Contacto</a
+        href="#contact">{t("nav.contact")}</a
       >
+      <a
+        class="lang-switch p-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-bright active:scale-95 transition-transform cursor-pointer inline-flex items-center justify-center"
+        href={otherLangHref}
+        data-lang-switch={otherLang}
+        aria-label={t("nav.switchLanguageAria")}
+      >
+        <span class="material-symbols-outlined">language</span>
+      </a>
       <button
         id="themeToggle"
         class="p-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-bright active:scale-95 transition-transform cursor-pointer"
-        aria-label="Cambiar tema"
+        aria-label={t("nav.toggleTheme")}
       >
         <span class="material-symbols-outlined">settings_brightness</span>
       </button>
@@ -52,7 +60,7 @@ const otherLangHref = getLocalizedHref(otherLang);
     <button
       id="hamburger"
       class="md:hidden text-primary dark:text-primary-bright"
-      aria-label="Abrir menú"
+      aria-label={t("nav.toggleMenu")}
     >
       <span class="material-symbols-outlined text-3xl" id="menuIcon">menu</span>
     </button>
@@ -66,24 +74,35 @@ const otherLangHref = getLocalizedHref(otherLang);
     <div class="flex flex-col px-8 py-6 gap-4">
       <a
         class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary-bright transition-colors py-2"
-        href="#services">Servicios</a
+        href="#services">{t("nav.services")}</a
       >
       <a
         class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary-bright transition-colors py-2"
-        href="#about">Nosotros</a
+        href="#about">{t("nav.about")}</a
       >
       <a
         class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary-bright transition-colors py-2"
-        href="#contact">Contacto</a
+        href="#contact">{t("nav.contact")}</a
       >
-      <button
-        id="themeToggleMobile"
-        class="flex items-center gap-2 p-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-bright w-fit cursor-pointer"
-        aria-label="Cambiar tema"
-      >
-        <span class="material-symbols-outlined">settings_brightness</span>
-        <span class="text-sm font-label">Cambiar Tema</span>
-      </button>
+      <div class="flex items-center gap-3 mt-2">
+        <a
+          class="lang-switch flex items-center gap-2 p-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-bright w-fit cursor-pointer"
+          href={otherLangHref}
+          data-lang-switch={otherLang}
+          aria-label={t("nav.switchLanguageAria")}
+        >
+          <span class="material-symbols-outlined">language</span>
+          <span class="text-sm font-label">{t("nav.switchLanguageLabel")}</span>
+        </a>
+        <button
+          id="themeToggleMobile"
+          class="flex items-center gap-2 p-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-bright w-fit cursor-pointer"
+          aria-label={t("nav.toggleTheme")}
+        >
+          <span class="material-symbols-outlined">settings_brightness</span>
+          <span class="text-sm font-label">{t("nav.toggleThemeLabel")}</span>
+        </button>
+      </div>
     </div>
   </div>
 </header>

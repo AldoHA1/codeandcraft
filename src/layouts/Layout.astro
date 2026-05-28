@@ -11,14 +11,11 @@ const ogLocale = getOgLocale(lang);
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Code&Craft - Tu laboratorio digital para landing pages, desarrollo web, campañas e innovación de producto."
-    />
+    <meta name="description" content={t("meta.description")} />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -47,13 +44,14 @@ const ogLocale = getOgLocale(lang);
     />
     <title>{t("meta.title")}</title>
     <script is:inline>
-      // Language auto-detect: redirect on first visit based on stored preference or browser language
+      // Language auto-detect: redirect on first visit based on stored preference or browser language.
+      // Respects user choice (preferredLang) over browser default.
       (function () {
         try {
           if (sessionStorage.getItem("langChecked")) return;
           sessionStorage.setItem("langChecked", "1");
           var path = window.location.pathname;
-          var currentLang = path.indexOf("/en") === 0 ? "en" : "es";
+          var currentLang = /^\/en(\/|$)/.test(path) ? "en" : "es";
           var stored = localStorage.getItem("preferredLang");
           var target =
             stored ||

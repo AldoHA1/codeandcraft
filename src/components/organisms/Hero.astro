@@ -37,39 +37,31 @@ const t = useTranslations(lang);
         <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
         <span
           class="text-sm font-label font-bold text-primary dark:text-primary-bright tracking-wide"
-          >Abiertos a Proyectos</span
+          >{t("hero.badge")}</span
         >
       </div>
       <h1
         class="font-headline text-6xl md:text-8xl font-extrabold tracking-tight leading-none mb-8 text-on-surface dark:text-white reveal"
-      >
-        Dos mundos que nunca debieron estar <span
-          class="text-primary dark:text-primary-bright">separados</span
-        >
-        <span class="text-tertiary dark:text-tertiary-bright">historia</span> y <span
-          class="italic text-secondary dark:text-secondary-bright">código</span
-        >.
-      </h1>
+        set:html={t("hero.titleHtml")}
+      />
       <p
         class="text-xl md:text-2xl text-on-surface-variant dark:text-slate-400 max-w-2xl mb-12 leading-relaxed reveal"
         style="transition-delay: 0.15s;"
       >
-        Un estudio web boutique liderado por expertos en narrativa estratégica e
-        ingeniería Full-stack real. Sin procesos lentos. Sin resultados
-        promedio. Sin humo.
+        {t("hero.subtitle")}
       </p>
       <div class="flex flex-wrap gap-4 reveal" style="transition-delay: 0.3s;">
         <a
           href="#contact"
           class="bg-gradient-to-r from-primary to-tertiary dark:from-primary-bright dark:to-tertiary-bright text-on-primary px-8 py-4 rounded-md font-bold tracking-tight hover:shadow-lg hover:shadow-primary/25 dark:hover:shadow-primary-bright/20 transition-all active:scale-95 hover:-translate-y-0.5 inline-block"
         >
-          Inicia tu Proyecto
+          {t("hero.ctaPrimary")}
         </a>
         <a
           href="#services"
           class="border-2 border-outline-variant/30 dark:border-slate-700 px-8 py-4 rounded-md font-bold tracking-tight hover:bg-surface-container-low dark:hover:bg-slate-800 hover:border-primary/30 dark:hover:border-primary-bright/30 transition-all inline-block"
         >
-          Ver Servicios
+          {t("hero.ctaSecondary")}
         </a>
       </div>
     </div>
@@ -118,7 +110,7 @@ const t = useTranslations(lang);
           <div class="w-3 h-3 rounded-full bg-tertiary"></div>
           <span
             class="text-xs font-label font-bold text-on-surface-variant dark:text-slate-400"
-            >3 proyectos activos</span
+            >{t("hero.accent")}</span
           >
         </div>
       </div>
