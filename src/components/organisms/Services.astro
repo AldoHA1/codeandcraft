@@ -1,83 +1,148 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<section class="py-24 px-8 bg-background dark:bg-slate-950 relative" id="services">
+<section
+  class="py-24 px-8 bg-background dark:bg-slate-950 relative"
+  id="services"
+>
   <div class="max-w-7xl mx-auto">
     <div class="mb-16 reveal">
-      <h4 class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary dark:from-primary-bright dark:to-tertiary-bright font-bold tracking-[0.2em] uppercase text-sm mb-4 font-label gradient-text">
-        Servicios
+      <h4
+        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary dark:from-primary-bright dark:to-tertiary-bright font-bold tracking-[0.2em] uppercase text-sm mb-4 font-label gradient-text"
+      >
+        {t("services.eyebrow")}
       </h4>
-      <h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-on-surface dark:text-white">Precisión, <span class="italic text-secondary dark:text-secondary-bright">por diseño</span>.</h2>
-      <div class="h-1.5 w-20 bg-gradient-to-r from-primary via-secondary to-tertiary dark:from-primary-bright dark:via-secondary-bright dark:to-tertiary-bright rounded-full"></div>
+      <h2
+        class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-on-surface dark:text-white"
+        set:html={t("services.titleHtml")}
+      />
+      <div
+        class="h-1.5 w-20 bg-gradient-to-r from-primary via-secondary to-tertiary dark:from-primary-bright dark:via-secondary-bright dark:to-tertiary-bright rounded-full"
+      >
+      </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Landing Page -->
-      <div class="reveal card-glow bg-surface-container-lowest dark:bg-slate-800 p-8 rounded-xl ambient-cloud border border-transparent hover:border-primary/20 dark:hover:border-primary-bright/20 transition-all duration-300 group flex flex-col">
-        <div class="w-12 h-12 rounded-md bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary-bright/15 dark:to-secondary-bright/15 flex items-center justify-center text-primary dark:text-primary-bright mb-6 group-hover:scale-110 transition-transform">
+      <div
+        class="reveal card-glow bg-surface-container-lowest dark:bg-slate-800 p-8 rounded-xl ambient-cloud border border-transparent hover:border-primary/20 dark:hover:border-primary-bright/20 transition-all duration-300 group flex flex-col"
+      >
+        <div
+          class="w-12 h-12 rounded-md bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary-bright/15 dark:to-secondary-bright/15 flex items-center justify-center text-primary dark:text-primary-bright mb-6 group-hover:scale-110 transition-transform"
+        >
           <span class="material-symbols-outlined">web</span>
         </div>
-        <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">Landing Page</h3>
-        <p class="text-on-surface-variant dark:text-slate-400 leading-relaxed flex-grow">
-          La solución precisa para necesidades enfocadas que no requieren un sitio completo. Estructuras ágiles con narrativa estratégica, diseñadas para alcanzar un único objetivo.
+        <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">
+          {t("services.landing.title")}
+        </h3>
+        <p
+          class="text-on-surface-variant dark:text-slate-400 leading-relaxed flex-grow"
+        >
+          {t("services.landing.desc")}
         </p>
-        <a href="#contact" class="mt-6 inline-flex items-center gap-2 font-label font-bold text-primary dark:text-primary-bright group-hover:gap-3 transition-all">
-          Saber más
+        <a
+          href="#contact"
+          class="mt-6 inline-flex items-center gap-2 font-label font-bold text-primary dark:text-primary-bright group-hover:gap-3 transition-all"
+        >
+          {t("services.learnMore")}
           <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
         <div class="mt-6 flex gap-1.5">
-          <span class="w-8 h-1 rounded-full bg-primary dark:bg-primary-bright"></span>
-          <span class="w-4 h-1 rounded-full bg-secondary dark:bg-secondary-bright"></span>
-          <span class="w-2 h-1 rounded-full bg-primary/30 dark:bg-primary-bright/30"></span>
+          <span class="w-8 h-1 rounded-full bg-primary dark:bg-primary-bright"
+          ></span>
+          <span
+            class="w-4 h-1 rounded-full bg-secondary dark:bg-secondary-bright"
+          ></span>
+          <span
+            class="w-2 h-1 rounded-full bg-primary/30 dark:bg-primary-bright/30"
+          ></span>
         </div>
       </div>
 
       <!-- Web Sites -->
-      <div class="reveal card-glow bg-surface-container-lowest dark:bg-slate-800 p-8 rounded-xl ambient-cloud border border-transparent hover:border-secondary/20 dark:hover:border-secondary-bright/20 transition-all duration-300 group flex flex-col" style="transition-delay: 0.1s;">
-        <div class="w-12 h-12 rounded-md bg-gradient-to-br from-secondary/10 to-tertiary/10 dark:from-secondary-bright/15 dark:to-tertiary-bright/15 flex items-center justify-center text-secondary dark:text-secondary-bright mb-6 group-hover:scale-110 transition-transform">
+      <div
+        class="reveal card-glow bg-surface-container-lowest dark:bg-slate-800 p-8 rounded-xl ambient-cloud border border-transparent hover:border-secondary/20 dark:hover:border-secondary-bright/20 transition-all duration-300 group flex flex-col"
+        style="transition-delay: 0.1s;"
+      >
+        <div
+          class="w-12 h-12 rounded-md bg-gradient-to-br from-secondary/10 to-tertiary/10 dark:from-secondary-bright/15 dark:to-tertiary-bright/15 flex items-center justify-center text-secondary dark:text-secondary-bright mb-6 group-hover:scale-110 transition-transform"
+        >
           <span class="material-symbols-outlined">terminal</span>
         </div>
-        <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">Sitios Web</h3>
-        <p class="text-on-surface-variant dark:text-slate-400 leading-relaxed flex-grow">
-          Ecosistemas digitales robustos construidos desde cero — sin límites de plantillas. Desarrollo Full-stack de alto rendimiento combinado con una estructura que proyecta el alma de tu marca en cada interacción.
+        <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">
+          {t("services.websites.title")}
+        </h3>
+        <p
+          class="text-on-surface-variant dark:text-slate-400 leading-relaxed flex-grow"
+        >
+          {t("services.websites.desc")}
         </p>
-        <a href="#contact" class="mt-6 inline-flex items-center gap-2 font-label font-bold text-secondary dark:text-secondary-bright group-hover:gap-3 transition-all">
-          Saber más
+        <a
+          href="#contact"
+          class="mt-6 inline-flex items-center gap-2 font-label font-bold text-secondary dark:text-secondary-bright group-hover:gap-3 transition-all"
+        >
+          {t("services.learnMore")}
           <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
         <div class="mt-6 flex gap-1.5">
-          <span class="w-8 h-1 rounded-full bg-secondary dark:bg-secondary-bright"></span>
-          <span class="w-4 h-1 rounded-full bg-tertiary dark:bg-tertiary-bright"></span>
-          <span class="w-2 h-1 rounded-full bg-secondary/30 dark:bg-secondary-bright/30"></span>
+          <span
+            class="w-8 h-1 rounded-full bg-secondary dark:bg-secondary-bright"
+          ></span>
+          <span class="w-4 h-1 rounded-full bg-tertiary dark:bg-tertiary-bright"
+          ></span>
+          <span
+            class="w-2 h-1 rounded-full bg-secondary/30 dark:bg-secondary-bright/30"
+          ></span>
         </div>
       </div>
 
       <!-- Maintenance -->
-      <div class="reveal card-glow bg-surface-container-lowest dark:bg-slate-800 p-8 rounded-xl ambient-cloud border border-transparent hover:border-tertiary/20 dark:hover:border-tertiary-bright/20 transition-all duration-300 group flex flex-col" style="transition-delay: 0.2s;">
-        <div class="w-12 h-12 rounded-md bg-gradient-to-br from-tertiary/10 to-neutral/20 dark:from-tertiary-bright/15 dark:to-neutral/15 flex items-center justify-center text-tertiary dark:text-tertiary-bright mb-6 group-hover:scale-110 transition-transform">
+      <div
+        class="reveal card-glow bg-surface-container-lowest dark:bg-slate-800 p-8 rounded-xl ambient-cloud border border-transparent hover:border-tertiary/20 dark:hover:border-tertiary-bright/20 transition-all duration-300 group flex flex-col"
+        style="transition-delay: 0.2s;"
+      >
+        <div
+          class="w-12 h-12 rounded-md bg-gradient-to-br from-tertiary/10 to-neutral/20 dark:from-tertiary-bright/15 dark:to-neutral/15 flex items-center justify-center text-tertiary dark:text-tertiary-bright mb-6 group-hover:scale-110 transition-transform"
+        >
           <span class="material-symbols-outlined">build</span>
         </div>
-        <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">Mantenimiento</h3>
-        <p class="text-on-surface-variant dark:text-slate-400 leading-relaxed flex-grow">
-          Protegemos la salud técnica y la velocidad de tu plataforma mediante optimización proactiva. No solo corregimos bugs — acompañamos la evolución de tu sitio al máximo nivel profesional.
+        <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">
+          {t("services.maintenance.title")}
+        </h3>
+        <p
+          class="text-on-surface-variant dark:text-slate-400 leading-relaxed flex-grow"
+        >
+          {t("services.maintenance.desc")}
         </p>
-        <a href="#contact" class="mt-6 inline-flex items-center gap-2 font-label font-bold text-tertiary dark:text-tertiary-bright group-hover:gap-3 transition-all">
-          Saber más
+        <a
+          href="#contact"
+          class="mt-6 inline-flex items-center gap-2 font-label font-bold text-tertiary dark:text-tertiary-bright group-hover:gap-3 transition-all"
+        >
+          {t("services.learnMore")}
           <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
         <div class="mt-6 flex gap-1.5">
-          <span class="w-8 h-1 rounded-full bg-tertiary dark:bg-tertiary-bright"></span>
-          <span class="w-4 h-1 rounded-full bg-neutral dark:bg-neutral-bright"></span>
-          <span class="w-2 h-1 rounded-full bg-tertiary/30 dark:bg-tertiary-bright/30"></span>
+          <span class="w-8 h-1 rounded-full bg-tertiary dark:bg-tertiary-bright"
+          ></span>
+          <span class="w-4 h-1 rounded-full bg-neutral dark:bg-neutral-bright"
+          ></span>
+          <span
+            class="w-2 h-1 rounded-full bg-tertiary/30 dark:bg-tertiary-bright/30"
+          ></span>
         </div>
       </div>
     </div>
 
     <!-- Consultancy note -->
     <div class="mt-16 reveal max-w-4xl mx-auto text-center">
-      <p class="text-lg md:text-xl text-on-surface-variant dark:text-slate-400 leading-relaxed">
-        No solo ejecutamos servicios fijos. Te acompañamos con consultoría experta para identificar lo que tu proyecto realmente necesita — adaptando nuestra capacidad técnica y creativa para que cada decisión <span class="font-bold text-on-surface dark:text-white">libere todo el potencial de tu visión</span>.
-      </p>
+      <p
+        class="text-lg md:text-xl text-on-surface-variant dark:text-slate-400 leading-relaxed"
+        set:html={t("services.consultancyHtml")}
+      />
     </div>
   </div>
 </section>

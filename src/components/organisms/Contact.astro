@@ -1,49 +1,79 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<section class="py-24 px-8 bg-background dark:bg-slate-950 relative" id="contact">
+<section
+  class="py-24 px-8 bg-background dark:bg-slate-950 relative"
+  id="contact"
+>
   <!-- Background accents -->
-  <div class="absolute top-20 left-10 w-[200px] h-[200px] bg-primary/5 dark:bg-primary-bright/8 rounded-full blur-[80px] pointer-events-none"></div>
-  <div class="absolute bottom-20 right-10 w-[200px] h-[200px] bg-tertiary/8 dark:bg-tertiary-bright/10 rounded-full blur-[80px] pointer-events-none"></div>
+  <div
+    class="absolute top-20 left-10 w-[200px] h-[200px] bg-primary/5 dark:bg-primary-bright/8 rounded-full blur-[80px] pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute bottom-20 right-10 w-[200px] h-[200px] bg-tertiary/8 dark:bg-tertiary-bright/10 rounded-full blur-[80px] pointer-events-none"
+  >
+  </div>
 
   <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-    <h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mb-4 dark:text-white">Listos para ser tu <span class="text-primary dark:text-primary-bright">equipo de confianza</span>.</h2>
-    <p class="text-on-surface-variant dark:text-slate-400 text-lg">¿Buscas guía y ejecución experta que fusione lo mejor de la creatividad y la ingeniería? Hablemos.</p>
+    <h2
+      class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mb-4 dark:text-white"
+      set:html={t("contact.titleHtml")}
+    />
+    <p class="text-on-surface-variant dark:text-slate-400 text-lg">
+      {t("contact.subtitle")}
+    </p>
     <div class="color-divider w-16 mx-auto mt-6"></div>
   </div>
 
   <div class="max-w-2xl mx-auto reveal">
     <form class="space-y-12" action="#" method="POST">
       <div class="relative group">
-        <label for="name" class="block text-sm font-label font-bold text-on-surface-variant dark:text-slate-400 mb-2 px-1">Nombre Completo</label>
+        <label
+          for="name"
+          class="block text-sm font-label font-bold text-on-surface-variant dark:text-slate-400 mb-2 px-1"
+          >{t("contact.form.name")}</label
+        >
         <input
           id="name"
           type="text"
           name="name"
-          placeholder="Juan Pérez"
+          placeholder={t("contact.form.namePlaceholder")}
           required
           class="w-full bg-background dark:bg-slate-900 border-0 border-b-2 border-outline-variant/30 dark:border-slate-700 focus:border-primary dark:focus:border-primary-bright focus:ring-0 transition-all px-4 py-3 text-lg dark:text-white dark:placeholder-slate-500"
         />
       </div>
 
       <div class="relative group">
-        <label for="email" class="block text-sm font-label font-bold text-on-surface-variant dark:text-slate-400 mb-2 px-1">Correo Electrónico</label>
+        <label
+          for="email"
+          class="block text-sm font-label font-bold text-on-surface-variant dark:text-slate-400 mb-2 px-1"
+          >{t("contact.form.email")}</label
+        >
         <input
           id="email"
           type="email"
           name="email"
-          placeholder="juan@ejemplo.com"
+          placeholder={t("contact.form.emailPlaceholder")}
           required
           class="w-full bg-background dark:bg-slate-900 border-0 border-b-2 border-outline-variant/30 dark:border-slate-700 focus:border-secondary dark:focus:border-secondary-bright focus:ring-0 transition-all px-4 py-3 text-lg dark:text-white dark:placeholder-slate-500"
         />
       </div>
 
       <div class="relative group">
-        <label for="message" class="block text-sm font-label font-bold text-on-surface-variant dark:text-slate-400 mb-2 px-1">Mensaje del Proyecto</label>
+        <label
+          for="message"
+          class="block text-sm font-label font-bold text-on-surface-variant dark:text-slate-400 mb-2 px-1"
+          >{t("contact.form.message")}</label
+        >
         <textarea
           id="message"
           name="message"
-          placeholder="Describe tu visión..."
+          placeholder={t("contact.form.messagePlaceholder")}
           required
           rows="4"
           class="w-full bg-background dark:bg-slate-900 border-0 border-b-2 border-outline-variant/30 dark:border-slate-700 focus:border-tertiary dark:focus:border-tertiary-bright focus:ring-0 transition-all px-4 py-3 text-lg resize-none dark:text-white dark:placeholder-slate-500"
@@ -56,7 +86,7 @@
           class="w-full bg-gradient-to-r from-primary to-secondary dark:from-primary-bright dark:to-secondary-bright text-on-primary py-5 rounded-md font-bold text-lg hover:shadow-2xl hover:shadow-primary/25 dark:hover:shadow-primary-bright/20 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3 cursor-pointer"
         >
           <span class="material-symbols-outlined">send</span>
-          Enviar Mensaje
+          {t("contact.form.submit")}
         </button>
       </div>
     </form>

@@ -1,5 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="py-24 px-8 bg-background dark:bg-slate-950 relative" id="about">
@@ -53,31 +56,17 @@
       <h4
         class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary dark:from-primary-bright dark:to-tertiary-bright font-bold tracking-[0.2em] uppercase text-sm mb-6 font-label gradient-text"
       >
-        Quiénes Somos
+        {t("about.eyebrow")}
       </h4>
       <h2
         class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mb-8 leading-tight dark:text-white"
-      >
-        Donde el storytelling <span
-          class="italic text-secondary dark:text-secondary-bright">se une</span
-        > a la ingeniería inquebrantable.
-      </h2>
+        set:html={t("about.titleHtml")}
+      />
       <div
         class="space-y-6 text-lg text-on-surface-variant dark:text-slate-400 leading-relaxed"
       >
-        <p>
-          Un estudio boutique de creación web liderado por expertos en narrativa
-          estratégica y desarrollo técnico. Unimos talento creativo de primer
-          nivel con ingeniería Full-stack real — sin fábrica industrial, solo un
-          Estudio de alta precisión.
-        </p>
-        <p>
-          La mayoría de agencias son ruido, las shops publicitarias aportan
-          creatividad que no pueden construir, y las grandes casas de desarrollo
-          tienen el músculo pero les falta el alma. Somos el punto exacto donde
-          el storytelling se encuentra con una arquitectura técnica sólida como
-          una roca. Si no cuenta una historia, es solo ruido.
-        </p>
+        <p>{t("about.p1")}</p>
+        <p>{t("about.p2")}</p>
       </div>
       <!-- Colorful stats row -->
       <div class="flex flex-wrap gap-8 mt-10">
@@ -85,36 +74,36 @@
           <div
             class="text-3xl font-headline font-extrabold text-primary dark:text-primary-bright"
           >
-            14 años
+            {t("about.stats.years")}
           </div>
           <div
             class="text-sm text-on-surface-variant dark:text-slate-500 font-label"
           >
-            Experiencia Combinada
+            {t("about.stats.yearsLabel")}
           </div>
         </div>
         <div class="reveal" style="transition-delay: 0.3s;">
           <div
             class="text-3xl font-headline font-extrabold text-secondary dark:text-secondary-bright"
           >
-            1
+            {t("about.stats.projects")}
           </div>
           <div
             class="text-sm text-on-surface-variant dark:text-slate-500 font-label"
           >
-            Proyecto a la Vez
+            {t("about.stats.projectsLabel")}
           </div>
         </div>
         <div class="reveal" style="transition-delay: 0.4s;">
           <div
             class="text-3xl font-headline font-extrabold text-tertiary dark:text-tertiary-bright"
           >
-            0
+            {t("about.stats.middlemen")}
           </div>
           <div
             class="text-sm text-on-surface-variant dark:text-slate-500 font-label"
           >
-            Intermediarios
+            {t("about.stats.middlemenLabel")}
           </div>
         </div>
       </div>
@@ -127,20 +116,16 @@
       <h4
         class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-primary-bright dark:to-secondary-bright font-bold tracking-[0.2em] uppercase text-sm mb-4 font-label gradient-text"
       >
-        Por Qué Nosotros
+        {t("why.eyebrow")}
       </h4>
       <h2
         class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mb-4 dark:text-white"
-      >
-        14 años de experiencia combinada, <span
-          class="italic text-tertiary dark:text-tertiary-bright"
-          >vertidos en un solo proyecto,</span
-        > el tuyo.
-      </h2>
+        set:html={t("why.titleHtml")}
+      />
       <p
         class="text-on-surface-variant dark:text-slate-400 text-lg max-w-2xl mx-auto"
       >
-        Código puro diseñado para crecer y perdurar.
+        {t("why.subtitle")}
       </p>
       <div class="color-divider w-16 mx-auto mt-6"></div>
     </div>
@@ -155,11 +140,10 @@
           <span class="material-symbols-outlined">diamond</span>
         </div>
         <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">
-          Boutique
+          {t("why.boutique.title")}
         </h3>
         <p class="text-on-surface-variant dark:text-slate-400 leading-relaxed">
-          Sin cuentas gestionadas en masa. Un proyecto a la vez, para que cada
-          línea de código y cada palabra tenga un propósito real de negocio.
+          {t("why.boutique.desc")}
         </p>
         <div class="mt-6 flex gap-1.5">
           <span class="w-8 h-1 rounded-full bg-primary dark:bg-primary-bright"
@@ -183,12 +167,10 @@
           <span class="material-symbols-outlined">handshake</span>
         </div>
         <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">
-          Expertos al Mando
+          {t("why.experts.title")}
         </h3>
         <p class="text-on-surface-variant dark:text-slate-400 leading-relaxed">
-          Sin intermediarios. Trabaja directamente con los especialistas que
-          lideran la estrategia creativa y la ejecución técnica de tu
-          plataforma.
+          {t("why.experts.desc")}
         </p>
         <div class="mt-6 flex gap-1.5">
           <span
@@ -212,11 +194,10 @@
           <span class="material-symbols-outlined">favorite</span>
         </div>
         <h3 class="font-headline text-xl font-bold mb-3 dark:text-white">
-          Músculo Técnico, Alma Creativa
+          {t("why.craft.title")}
         </h3>
         <p class="text-on-surface-variant dark:text-slate-400 leading-relaxed">
-          Construimos productos digitales que no solo funcionan impecablemente —
-          viven, respiran y resuenan con quien los visita.
+          {t("why.craft.desc")}
         </p>
         <div class="mt-6 flex gap-1.5">
           <span class="w-8 h-1 rounded-full bg-tertiary dark:bg-tertiary-bright"
@@ -237,18 +218,17 @@
       <h4
         class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary dark:from-secondary-bright dark:to-tertiary-bright font-bold tracking-[0.2em] uppercase text-sm mb-4 font-label gradient-text"
       >
-        Las Personas
+        {t("team.eyebrow")}
       </h4>
       <h2
         class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mb-4 dark:text-white"
       >
-        Conoce a las Mentes detrás de Code&amp;Craft
+        {t("team.title")}
       </h2>
       <p
         class="text-on-surface-variant dark:text-slate-400 text-lg max-w-2xl mx-auto"
       >
-        Un equipo pequeño y enfocado donde la narrativa estratégica y la
-        ingeniería Full-stack hablan el mismo idioma.
+        {t("team.subtitle")}
       </p>
       <div class="color-divider w-16 mx-auto mt-6"></div>
     </div>
@@ -270,13 +250,12 @@
         <p
           class="text-sm font-label text-primary dark:text-primary-bright font-bold mb-4"
         >
-          Fundador y Lead Developer
+          {t("team.aldo.role")}
         </p>
         <p
           class="text-on-surface-variant dark:text-slate-400 text-sm leading-relaxed"
         >
-          Arquitecto Full-stack con pasión por el código limpio y los sistemas
-          escalables.
+          {t("team.aldo.bio")}
         </p>
         <div class="flex justify-center gap-1.5 mt-5">
           <span class="w-6 h-1 rounded-full bg-primary dark:bg-primary-bright"
@@ -302,13 +281,12 @@
         <p
           class="text-sm font-label text-secondary dark:text-secondary-bright font-bold mb-4"
         >
-          Fundadora y Directora Creativa
+          {t("team.pamela.role")}
         </p>
         <p
           class="text-on-surface-variant dark:text-slate-400 text-sm leading-relaxed"
         >
-          Transforma narrativas de marca en experiencias visuales que resuenan y
-          convierten.
+          {t("team.pamela.bio")}
         </p>
         <div class="flex justify-center gap-1.5 mt-5">
           <span
