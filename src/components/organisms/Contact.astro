@@ -31,16 +31,7 @@ const t = useTranslations(lang);
   </div>
 
   <div class="max-w-2xl mx-auto reveal">
-    <form
-      id="contact-form"
-      class="space-y-12"
-      action="/api/contact"
-      method="POST"
-      data-label-submit={t("contact.form.submit")}
-      data-label-sending={t("contact.form.sending")}
-      data-msg-success={t("contact.form.success")}
-      data-msg-error={t("contact.form.error")}
-    >
+    <form id="contact-form" class="space-y-12">
       <div class="relative group">
         <label
           for="name"
@@ -114,57 +105,5 @@ const t = useTranslations(lang);
 
 <script>
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
-  if (form) {
-    const button = form.querySelector("#contact-submit") as HTMLButtonElement;
-    const label = form.querySelector("[data-submit-label]") as HTMLElement;
-    const icon = form.querySelector("[data-submit-icon]") as HTMLElement;
-    const status = form.querySelector("#contact-status") as HTMLElement;
-
-    const labelSubmit = form.dataset.labelSubmit ?? "";
-    const labelSending = form.dataset.labelSending ?? "";
-    const msgSuccess = form.dataset.msgSuccess ?? "";
-    const msgError = form.dataset.msgError ?? "";
-
-    const setStatus = (text: string, kind: "success" | "error" | "") => {
-      status.textContent = text;
-      status.classList.remove("hidden", "text-primary", "text-error", "dark:text-primary-bright");
-      if (kind === "success") status.classList.add("text-primary", "dark:text-primary-bright");
-      if (kind === "error") status.classList.add("text-error");
-      if (!text) status.classList.add("hidden");
-    };
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (button.disabled) return;
-
-      const data = new FormData(form);
-      const payload = {
-        name: String(data.get("name") ?? "").trim(),
-        email: String(data.get("email") ?? "").trim(),
-        message: String(data.get("message") ?? "").trim(),
-      };
-
-      button.disabled = true;
-      label.textContent = labelSending;
-      icon.textContent = "hourglass_top";
-      setStatus("", "");
-
-      try {
-        const res = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) throw new Error(String(res.status));
-        form.reset();
-        setStatus(msgSuccess, "success");
-      } catch {
-        setStatus(msgError, "error");
-      } finally {
-        button.disabled = false;
-        label.textContent = labelSubmit;
-        icon.textContent = "send";
-      }
-    });
-  }
+  form?.addEventListener("submit", (event) => event.preventDefault());
 </script>
