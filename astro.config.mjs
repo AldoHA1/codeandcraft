@@ -5,7 +5,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://codeandcraft.pages.dev",
+  site: "https://codeandcraft.studio",
   output: "static",
   adapter: cloudflare({
     // @ts-ignore
